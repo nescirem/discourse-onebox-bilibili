@@ -20,14 +20,14 @@ module Onebox
        matches_regexp REGEX
 
        def video_id
-         match = uri.path.match(/\/video\/av(\d+)\?.*/)
+         match = @url.match(/\/video\/av(\d+)\?.*/)
          return "aid=#{match[1]}" if match && match[1]
-         match = uri.path.match(/\/video\/BV([a-zA-Z0-9]+)\?.*/)
+         match = @url.match(/\/video\/BV([a-zA-Z0-9]+)\?.*/)
          return "bvid=#{match[1]}" if match && match[1]
 
          nil
-       rescue
-         return nil
+       # rescue
+       #   return nil
        end
 
        def to_html
